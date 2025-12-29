@@ -15,6 +15,7 @@ import 'screens/verifikasi_akun.dart';
 import 'screens/kelola_surat_masuk.dart';
 import 'screens/profile_user.dart';
 import 'screens/register_user.dart';
+import 'screens/profile_admin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/verifikasi_akun': (_) => const VerifikasiAkunPage(),
         '/kelola_surat_masuk': (_) => const KelolaSuratMasukPage(),
         '/profile_user': (_) => const ProfileUserPage(),
+        '/profile_admin': (_) => const ProfileAdminPage(),
       },
     );
   }

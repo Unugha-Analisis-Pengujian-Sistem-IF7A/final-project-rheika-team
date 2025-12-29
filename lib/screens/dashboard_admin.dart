@@ -2,8 +2,79 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-class DashboardAdminPage extends StatelessWidget {
+// Ubah menjadi StatefulWidget agar bisa mengelola state BottomNavigationBar
+class DashboardAdminPage extends StatefulWidget {
   const DashboardAdminPage({super.key});
+
+  @override
+  State<DashboardAdminPage> createState() => _DashboardAdminPageState();
+}
+
+class _DashboardAdminPageState extends State<DashboardAdminPage> {
+  // Indeks terpilih saat ini untuk BottomNavigationBar
+  // 0: Home/Dashboard, 1: Surat, 2: Profil Admin
+  int _selectedIndex = 0;
+
+  // List of routes or functions for navigation items
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    // Logika navigasi berdasarkan index
+    switch (index) {
+      case 0:
+        // Jika index 0 (Home), tetap di halaman ini (DashboardAdminPage)
+        // Tidak perlu navigasi, atau bisa ditambahkan logika untuk memastikan ini adalah root.
+        break;
+      case 1:
+        // Index 1 (Surat/Description icon) - Contoh navigasi ke halaman surat
+        // Karena di dashboard sudah ada tombol Kelola Surat Masuk,
+        // mungkin ini dimaksudkan untuk navigasi ke halaman surat admin.
+        // Asumsi rute: '/surat_admin'
+        // Anda bisa mengganti ini jika rute yang dimaksud berbeda.
+        Navigator.pushNamed(context, '/surat_admin');
+        break;
+      case 2:
+        // Index 2 (Person icon) - Navigasi ke halaman Profil Admin
+        Navigator.pushNamed(context, '/profile_admin');
+        break;
+    }
+  }
+
+  // Widget untuk Card Statistik (tetap sama)
+  Widget _buildStatCard(String text, IconData icon) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12.withOpacity(0.08),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: AppColors.primary, size: 28),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -140,51 +211,26 @@ class DashboardAdminPage extends StatelessWidget {
         ),
       ),
 
-      // Bottom Navigation (opsional, sesuai Figma)
+      // Bottom Navigation Bar yang sudah diubah
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        // Tambahkan fungsi onItemTapped untuk navigasi
+        onTap: _onItemTapped,
+        // Set currentIndex menggunakan state
+        currentIndex: _selectedIndex,
         selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ''),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home', // Menambahkan label untuk kejelasan (optional)
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.description_outlined),
-            label: '',
+            label: 'Surat', // Menambahkan label untuk kejelasan (optional)
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
-        ],
-      ),
-    );
-  }
-
-  // Widget untuk Card Statistik
-  Widget _buildStatCard(String text, IconData icon) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12.withOpacity(0.08),
-            blurRadius: 6,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: AppColors.primary, size: 28),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Profil', // Menambahkan label untuk kejelasan (optional)
           ),
         ],
       ),

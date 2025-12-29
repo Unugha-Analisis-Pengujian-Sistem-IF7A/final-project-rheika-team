@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-class ProfileUserPage extends StatelessWidget {
-  const ProfileUserPage({super.key});
+class ProfileAdminPage extends StatelessWidget {
+  const ProfileAdminPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +18,13 @@ class ProfileUserPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _infoBox(label: 'Nama Lengkap', value: 'Bebe'),
+              _infoBox(label: 'Nama Lengkap', value: 'Admin'),
               const SizedBox(height: 12),
-              _infoBox(label: 'NIK', value: '1234567890'),
-              const SizedBox(height: 12),
-              _infoBox(label: 'Alamat', value: 'Yogyakarta'),
-              const SizedBox(height: 12),
-              _infoBox(label: 'Email', value: 'bebe@email.com'),
+              _infoBox(label: 'Email', value: 'admin@desa.id'),
               const Spacer(),
               Center(
                 child: ElevatedButton(
+                  // LOGOUT: SUDAH BENAR ke /choose_role
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, '/choose_role');
                   },
@@ -57,16 +54,18 @@ class ProfileUserPage extends StatelessWidget {
         ),
       ),
 
-      // ✅ Bagian yang ditambahkan agar navigasi berfungsi
+      // Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 2,
         selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pushReplacementNamed(context, '/dashboard_user');
+            // Navigasi ke Dashboard
+            Navigator.pushReplacementNamed(context, '/dashboard_admin');
           } else if (index == 1) {
-            Navigator.pushReplacementNamed(context, '/status_surat');
+            // PERBAIKAN: Menggunakan rute yang benar sesuai main.dart
+            Navigator.pushReplacementNamed(context, '/kelola_surat_masuk');
           } else if (index == 2) {
             // Halaman profil (tetap di sini)
           }
@@ -84,6 +83,7 @@ class ProfileUserPage extends StatelessWidget {
   }
 
   Widget _infoBox({required String label, required String value}) {
+    // ... (metode _infoBox tidak diubah)
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
