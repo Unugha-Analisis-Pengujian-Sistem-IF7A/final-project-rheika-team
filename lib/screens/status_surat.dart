@@ -69,7 +69,7 @@ class _StatusSuratPageState extends State<StatusSuratPage> {
         decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.grey.withOpacity(0.14)),
+          border: Border.all(color: Colors.grey.withValues(alpha: 0.14)),
         ),
         child: Row(
           children: [

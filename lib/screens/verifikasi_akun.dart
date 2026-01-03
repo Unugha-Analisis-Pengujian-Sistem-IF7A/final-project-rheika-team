@@ -187,7 +187,7 @@ class _VerifikasiAkunPageState extends State<VerifikasiAkunPage> {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 10,
             offset: const Offset(0, 6),
           ),
@@ -229,7 +229,7 @@ class _VerifikasiAkunPageState extends State<VerifikasiAkunPage> {
               TextButton(
                 onPressed: () => _setStatus(idx, 'Disetujui'),
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.green.withOpacity(0.12),
+                  backgroundColor: Colors.green.withValues(alpha: 0.12),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 14,
                     vertical: 8,
@@ -247,7 +247,7 @@ class _VerifikasiAkunPageState extends State<VerifikasiAkunPage> {
               TextButton(
                 onPressed: () => _setStatus(idx, 'Ditolak'),
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.red.withOpacity(0.12),
+                  backgroundColor: Colors.red.withValues(alpha: 0.12),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 14,
                     vertical: 8,

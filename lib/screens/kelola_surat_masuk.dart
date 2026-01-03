@@ -101,7 +101,7 @@ class _KelolaSuratMasukPageState extends State<KelolaSuratMasukPage> {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -135,7 +135,7 @@ class _KelolaSuratMasukPageState extends State<KelolaSuratMasukPage> {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: _statusColor(status).withOpacity(0.12),
+                  color: _statusColor(status).withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
